@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+</head>
+<body>
+    <div class="mermaid">
+        gitGraph
+            commit
+            commit
+            branch feature/MassImport
+            commit
+            commit
+            branch QA1
+            commit
+            commit
+            checkout QA1
+            branch QA2
+            commit
+            commit
+            checkout QA2
+            branch QA3
+            commit
+            commit
+            checkout QA3
+            branch staging
+            checkout staging
+            merge QA1 tag:"Version 0.12.1-QA1"
+            checkout staging
+            merge QA2 tag:"Version 0.12.1-QA2"
+            checkout staging
+            merge QA3 tag:"Version 0.12.1-QA3"
+            commit
+            branch training
+            commit
+            merge staging tag:"Version 0.12.1-Staging"
+            commit
+            branch UAT
+            checkout UAT
+            merge staging tag:"Version 0.12.1-Staging"
+            merge training tag:"Version 0.12.1-Training"
+            commit
+            checkout main
+            merge UAT tag:"Version 0.12.1-UAT"
+            commit id:"MVP"
+            branch release/1.0.0
+            commit
+            checkout main
+            merge release/1.0.0 tag:"1.0.0"
+            commit
+            branch hotfix/urgentFix
+            commit
+            commit
+            checkout main
+            merge hotfix/urgentFix tag:"1.0.2 - Urgent Fix"
+    </div>
+</body>
+</html>
